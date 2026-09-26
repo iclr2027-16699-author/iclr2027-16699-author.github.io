@@ -16,10 +16,13 @@ Open `http://127.0.0.1:8765`.
 
 - `index.html`: abstract, captions, results, and all seven tables.
 - `styles.css`: responsive layout and typography.
-- `script.js`: accessible figure enlargement, with ordinary image links as a fallback.
-- `assets/`: six lossless figure exports, the anonymous paper PDF, and a simple favicon.
+- `script.js`: accessible figure enlargement and the driving-video selector.
+- `assets/`: six lossless figure exports and a simple favicon.
+- `assets/videos/`: five metadata-stripped MP4 clips and their poster images.
 
 Edit the relevant HTML section to add future materials. Tables are semantic HTML and can scroll on narrow screens. Appendix tables are inside the expandable results section. Figures have intrinsic image dimensions and descriptive alt text; retain these when replacing an asset.
+
+The final section uses one video player with five selection buttons. Each button defines its video filename, title, and description. The player starts paused; choosing another clip starts that clip. All videos and posters are hosted locally, without embedded third-party players. There is no paper download on the site.
 
 The abstract and numerical results come from the supplied paper. The main three tables are visible by default. Tables B.1 and C.1–C.3 appear under “Additional benchmarks and inference efficiency.” The default quantitative planner uses learned-energy proposals followed by composed-energy selection. The qualitative OR examples instead use composed gradients. Keep this distinction when editing captions.
 
@@ -48,7 +51,7 @@ git config --local tag.gpgsign false
 
 Anonymous commit metadata does not hide the authenticated GitHub pusher or deployment actor. Do not push using a personal account, its SSH key, or its token. Do not use a personal account's GitHub noreply email: it is still associated with that account.
 
-Use fresh image exports with no EXIF/XMP author fields. Sanitize document metadata before replacing `assets/paper.pdf`, and inspect the visible content for names, affiliations, acknowledgments, profile links, or identifying watermarks. The current paper has anonymous metadata, no attachments or annotations, and is visually identical to the supplied 24-page paper. Original figure PDFs are not included.
+Use fresh image exports with no EXIF/XMP author fields. Strip container and stream metadata from new videos, and inspect their visible content for names, affiliations, profile links, or identifying watermarks. The current clips contain video only, with no audio, subtitles, or data tracks. Original figure PDFs are not included. The previously hosted anonymous paper has been removed from the current site; its sanitized copy remains in earlier Git commits.
 
 The page makes no external resource requests. Search-engine indexing is discouraged by `robots.txt` and page metadata; these are indexing preferences, not access controls or an anonymity guarantee.
 

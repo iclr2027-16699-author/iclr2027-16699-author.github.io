@@ -20,8 +20,7 @@
   <h1>Energy-Based Generative Planning for Autonomous Driving</h1>
   <p class="authors">Anonymous authors</p>
   <p class="venue">ICLR 2027 · Submission 16699 · Under double-blind review</p>
-  <div class="publication-links"><a class="pill" href="assets/paper.pdf"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M4 2h8l5 5v15H4zM12 2v6h5M7 13h7M7 17h7"/></svg>Paper</a></div>
-  <nav class="section-nav" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#composition">Composition</a><a href="#ablations">Ablations</a></nav>
+  <nav class="section-nav" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#composition">Composition</a><a href="#ablations">Ablations</a><a href="#videos">Videos</a></nav>
 </header>
 <main id="main">
 <section class="teaser container" aria-label="EnergyDrive overview">
@@ -137,8 +136,26 @@
 <h3>Energy-composition weights</h3>
 <figure><a class="figure-link" href="assets/ablation-sweep.webp" data-title="Sensitivity to energy-composition weights" aria-label="Enlarge figure: Sensitivity to energy-composition weights"><img src="assets/ablation-sweep.webp" width="2800" height="1018" alt="A heatmap of EPDMS over collision and drivable-area weights and four plots showing the safety-progress trade-off as the progress weight changes." loading="lazy" decoding="async"></a><figcaption><strong>A controllable safety–progress trade-off.</strong> The left panel varies collision and drivable-area weights with zero progress weight. The right panels vary the progress weight with both safety weights fixed to one. All sweeps use the non-contrastive base model; the zero-weight setting still selects over a repulsive proposal pool, unlike the single-proposal “Base” row in Table 3.</figcaption></figure>
 </div></section>
+<section id="videos" class="section"><div class="container">
+<h2>Zero-shot inference on the HUGSIM simulator</h2>
+<p class="lead">Front-camera views of EnergyDrive in HUGSIM. Select a clip to watch.</p>
+<div class="video-selector" role="group" aria-label="Select a driving video">
+  <button type="button" class="video-choice" aria-pressed="true" aria-controls="driving-video" data-video="right-turn" data-title="Right turn" data-description="A six-second front-camera view of a right turn.">Right turn</button>
+  <button type="button" class="video-choice" aria-pressed="false" aria-controls="driving-video" data-video="quiet-residential" data-title="Quiet residential" data-description="Driving along a quiet residential street.">Quiet residential</button>
+  <button type="button" class="video-choice" aria-pressed="false" aria-controls="driving-video" data-video="marked-residential" data-title="Marked residential" data-description="Driving along a residential street with lane markings.">Marked residential</button>
+  <button type="button" class="video-choice" aria-pressed="false" aria-controls="driving-video" data-video="oncoming-car" data-title="Oncoming car" data-description="A residential driving scene with an oncoming vehicle.">Oncoming car</button>
+  <button type="button" class="video-choice" aria-pressed="false" aria-controls="driving-video" data-video="marked-residential-short" data-title="Marked residential · 10 seconds" data-description="The first ten seconds of the marked residential scene.">Marked residential · 10 s</button>
+</div>
+<figure class="video-example">
+  <video id="driving-video" controls playsinline muted preload="metadata" width="800" height="450" poster="assets/videos/right-turn.webp" src="assets/videos/right-turn.mp4" aria-label="Right turn" aria-describedby="video-description">
+    Your browser does not support embedded video. <a href="assets/videos/right-turn.mp4">Open the right-turn clip</a>.
+  </video>
+  <figcaption aria-live="polite" aria-atomic="true"><strong id="video-title">Right turn</strong><span id="video-description">A six-second front-camera view of a right turn.</span></figcaption>
+</figure>
+<noscript><p class="note">Open a clip: <a href="assets/videos/right-turn.mp4">Right turn</a> · <a href="assets/videos/quiet-residential.mp4">Quiet residential</a> · <a href="assets/videos/marked-residential.mp4">Marked residential</a> · <a href="assets/videos/oncoming-car.mp4">Oncoming car</a> · <a href="assets/videos/marked-residential-short.mp4">Marked residential, 10 seconds</a>.</p></noscript>
+</div></section>
 </main>
-<footer class="site-footer"><p>Anonymous submission 16699 · ICLR 2027</p><p><a href="assets/paper.pdf">Read the paper</a> · <a href="#main">Back to overview</a></p></footer>
+<footer class="site-footer"><p>Anonymous submission 16699 · ICLR 2027</p><p><a href="#main">Back to overview</a></p></footer>
 <dialog id="figure-dialog" aria-labelledby="figure-title">
 <div class="dialog-toolbar"><h2 id="figure-title">Figure</h2><button type="button" class="close-button" autofocus>Close</button></div>
 <div class="dialog-body"><img alt=""></div>
