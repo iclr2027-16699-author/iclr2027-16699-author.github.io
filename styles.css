@@ -1,0 +1,78 @@
+:root{color-scheme:light;--ink:#252b33;--muted:#596471;--accent:#12657b;--line:#dfe6eb;--wash:#f5f8fa;--tint:#eaf4f7}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:2rem}
+body{margin:0;background:#fff;color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:4px}
+a:hover{text-decoration-thickness:2px}
+button{font:inherit}
+:focus-visible{outline:3px solid #1382a0;outline-offset:5px}
+.skip-link{position:absolute;top:0;left:1rem;transform:translateY(-150%);background:#fff;padding:.5rem 1rem;z-index:10}
+.skip-link:focus{transform:translateY(0)}
+.container{width:min(1100px,calc(100% - 48px));margin-inline:auto}
+.prose{max-width:850px;margin-inline:auto}
+.hero{text-align:center;padding:62px 0 36px}
+.wordmark{color:var(--accent);font-weight:700;letter-spacing:.04em;font-size:21px;margin:0 0 12px}
+h1{max-width:1050px;margin:0 auto 22px;font-size:clamp(2rem,4.2vw,3.2rem);font-weight:700;line-height:1.13;letter-spacing:-.035em;text-wrap:balance}
+.authors{font-size:21px;margin:0 0 2px}
+.venue{font-size:16px;color:var(--muted);margin:0}
+.publication-links{display:flex;justify-content:center;gap:10px;margin-top:23px}
+.pill{display:inline-flex;align-items:center;gap:9px;background:#30363c;color:#fff;border-radius:99px;padding:8px 22px;text-decoration:none;font-size:16px;font-weight:500}
+.pill:hover{background:var(--accent);text-decoration:none}
+.pill svg{width:17px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7}
+.section-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 26px;font-size:15px;margin:27px 0 0}
+.section-nav a{color:var(--muted);text-decoration:none}
+.section-nav a:hover{color:var(--accent)}
+.teaser{padding:8px 0 48px}
+figure{margin:26px 0 0}
+.figure-link{display:block;cursor:zoom-in;border-radius:3px}
+figure img{display:block;width:100%;height:auto}
+figcaption{color:var(--muted);font-size:15px;line-height:1.6;margin-top:14px}
+figcaption strong{color:var(--ink)}
+.teaser figcaption{max-width:940px;margin:20px auto 0;text-align:center;font-size:19px;line-height:1.55;color:#3b454f}
+.section{padding:54px 0 62px;border-top:1px solid #edf0f2}
+.section.shaded{background:var(--wash)}
+h2{font-size:31px;font-weight:650;letter-spacing:-.025em;line-height:1.25;text-align:center;margin:0 0 27px;text-wrap:balance}
+h3{font-size:22px;line-height:1.35;font-weight:600;margin:34px 0 12px;letter-spacing:-.015em}
+p{margin:0 0 17px}
+p:last-child{margin-bottom:0}
+.abstract p{text-align:justify;hyphens:auto}
+.lead{text-align:center;color:var(--muted);max-width:860px;margin:0 auto 27px}
+.note{font-size:15px;line-height:1.65;color:var(--muted);margin-top:14px}
+.table-wrap{overflow-x:auto;overscroll-behavior-x:contain;border:1px solid var(--line);border-radius:6px;background:white;margin-top:16px}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.4;white-space:nowrap;font-variant-numeric:tabular-nums}
+caption{text-align:left;padding:16px 18px;color:var(--ink);font-size:16px;font-weight:600;background:white;border-bottom:1px solid var(--line)}
+th,td{padding:11px 10px;text-align:right;border-bottom:1px solid #e7ecf0}
+thead th{background:#f4f6f8;color:#424c56;font-size:14px;font-weight:600}
+th:first-child,td:first-child{text-align:left;padding-left:18px}
+th:last-child,td:last-child{padding-right:18px}
+tbody th{font-weight:500}
+tbody tr:last-child>*{border-bottom:0}
+tbody tr.ours>*{background:var(--tint)}
+tbody tr.ours th{font-weight:700;color:#12576b}
+td.aggregate{vertical-align:middle;font-weight:600;border-left:1px solid var(--line)}
+.group-end>*{border-bottom:1px solid #c8d4dd}
+.best{font-weight:750}
+.table-help{font-size:14px;color:var(--muted);margin:8px 0 0}
+.table-group{background:#edf2f5;color:#414d57}
+.table-group th{text-align:left;font-weight:600;white-space:normal}
+.results-block+.results-block{margin-top:34px}
+details{border-top:1px solid var(--line);margin-top:32px;padding-top:18px}
+summary{cursor:pointer;font-size:19px;font-weight:600;color:var(--accent);padding:8px 0}
+details[open] summary{margin-bottom:15px}
+.appendix-table{margin-top:28px}
+.site-footer{border-top:1px solid var(--line);padding:30px 24px;text-align:center;color:var(--muted);font-size:14px}
+.site-footer p{margin:0}
+.site-footer a{color:var(--muted)}
+dialog{width:min(1600px,96vw);max-width:96vw;max-height:94dvh;border:1px solid var(--line);border-radius:8px;padding:18px;background:white;color:var(--ink)}
+dialog::backdrop{background:rgb(16 24 32 / .78)}
+.dialog-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:15px}
+.dialog-toolbar h2{font-size:19px;margin:0;text-align:left}
+.close-button{border:1px solid #cbd5dc;background:white;color:var(--ink);border-radius:5px;padding:6px 14px;cursor:pointer;font-size:15px;flex-shrink:0}
+.close-button:hover{background:var(--wash)}
+.dialog-body{overflow:auto;max-height:calc(94dvh - 116px)}
+.dialog-body img{display:block;width:100%;height:auto}
+.dialog-footer{font-size:14px;text-align:right;margin:12px 0 0}
+@media(min-width:1300px){.hero{padding-top:70px}.container{width:min(1120px,calc(100% - 64px))}}
+@media(max-width:700px){body{font-size:16px;line-height:1.65}.container{width:calc(100% - 32px)}.hero{padding:36px 0 22px}.wordmark{font-size:19px}h1{font-size:34px;margin-bottom:20px;letter-spacing:-.03em}.authors{font-size:19px}.venue{font-size:14px}.section-nav{gap:10px 19px;margin-top:24px}.teaser{padding:6px 0 34px}.teaser figcaption{font-size:17px;text-align:left}.section{padding:36px 0 42px}h2{font-size:27px;margin-bottom:22px}h3{font-size:20px}.abstract p{text-align:left}.lead{text-align:left}figure{margin-top:22px}figcaption{font-size:14px}.table-wrap{margin-top:12px}th,td{padding:10px}table{font-size:14px}caption{font-size:15px;padding:14px}.dialog-toolbar h2{font-size:16px}dialog{padding:12px}.dialog-body img{min-width:900px}.dialog-footer{text-align:left}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.section-nav,.publication-links,.skip-link,dialog{display:none}.section{padding:25px 0}.hero{padding:10px 0}.container{width:100%}.table-wrap{overflow:visible}table{font-size:10px}th,td{padding:5px}figure{break-inside:avoid}body{font-size:12px}}

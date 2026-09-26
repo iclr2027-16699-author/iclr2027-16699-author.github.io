@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EnergyDrive | Energy-Based Generative Planning for Autonomous Driving</title>
+  <meta name="description" content="EnergyDrive: energy-based generative planning for autonomous driving with interpretable energy landscapes, flexible sampling, and compositional control. Anonymous ICLR 2027 submission 16699.">
+  <meta name="author" content="Anonymous authors">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="hero container">
+  <p class="wordmark">EnergyDrive</p>
+  <h1>Energy-Based Generative Planning for Autonomous Driving</h1>
+  <p class="authors">Anonymous authors</p>
+  <p class="venue">ICLR 2027 · Submission 16699 · Under double-blind review</p>
+  <div class="publication-links"><a class="pill" href="assets/paper.pdf"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M4 2h8l5 5v15H4zM12 2v6h5M7 13h7M7 17h7"/></svg>Paper</a></div>
+  <nav class="section-nav" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#composition">Composition</a><a href="#ablations">Ablations</a></nav>
+</header>
+<main id="main">
+<section class="teaser container" aria-label="EnergyDrive overview">
+<figure><a class="figure-link" href="assets/teaser.webp" data-title="EnergyDrive overview" aria-label="Enlarge figure: EnergyDrive overview"><img src="assets/teaser.webp" width="2800" height="952" alt="Overview of interpretable energy landscapes, flexible trajectory sampling, compositional control, and benchmark performance." fetchpriority="high" decoding="async"></a><figcaption><strong>One learned energy landscape. Flexible driving objectives.</strong><br>EnergyDrive combines a learned driving prior with modular objectives for interpretable, compositional planning.</figcaption></figure></section>
+<section id="abstract" class="section shaded abstract"><div class="container prose">
+<h2>Abstract</h2>
+<p>The central goal of autonomous driving is to combine human-level driving performance with reliable decision-making under multiple safety and behavioral constraints. In this paper, we introduce <strong>EnergyDrive</strong>, an energy-based generative planning framework for end-to-end autonomous driving that supports interpretable planning, flexible sampling, and compositional control. EnergyDrive learns an explicit, scene-conditioned trajectory energy landscape from expert demonstrations, rather than time-dependent transport fields typically learned by diffusion- and flow-based generative planners. This provides a shared representation for trajectory generation and objective composition, with repulsive sampling to explore diverse driving trajectories. At inference time, the learned driving prior and modular energies for target speed, drivable-area compliance, and collision avoidance jointly define the planning objective. EnergyDrive outperforms the compared imitation-learning baselines on the NAVSIM v2 <em>navhard</em> and HUGSIM. Qualitative results demonstrate flexible sampling over driving behavior through energy composition. Energy landscape visualizations show the interpretability and reveal how learned preferences and individual constraints shape the resulting plans.</p>
+</div></section>
+<section id="method" class="section"><div class="container">
+<h2>Method overview</h2>
+<p class="lead">Learn an explicit trajectory energy from driving demonstrations, explore it with repulsive sampling, and select a plan using composed driving objectives.</p>
+<figure><a class="figure-link" href="assets/method.webp" data-title="EnergyDrive framework" aria-label="Enlarge figure: EnergyDrive framework"><img src="assets/method.webp" width="2800" height="1215" alt="Four-stage framework: camera observations and ego state; an EnergyDrive backbone with BEV and agent predictions; learned and modular energies; repulsive sampling and composed-energy selection." loading="lazy" decoding="async"></a><figcaption><strong>Scene-conditioned energy, composable objectives.</strong> Camera observations, ego state, and a driving command condition the learned energy and auxiliary scene predictions. The default planner generates candidates under the learned driving energy, then selects among them using the composed energy.</figcaption></figure></div></section>
+<section id="results" class="section shaded"><div class="container">
+<h2>Planning performance</h2>
+<p class="lead">EnergyDrive achieves <strong>44.2 EPDMS</strong> on NAVSIM-v2 <em>navhard</em> and <strong>37.9 average HD</strong> on HUGSIM, leading the compared imitation-learning baselines.</p>
+<div class="results-block"><div class="table-wrap" role="region" aria-label="NAVSIM-v2 navhard results" tabindex="0"><table><caption>Table 1. NAVSIM-v2 <em>navhard</em></caption>
+<thead><tr><th scope="col">Method</th><th scope="col">Stage</th><th scope="col">NC ↑</th><th scope="col">DAC ↑</th><th scope="col">DDC ↑</th><th scope="col">TLC ↑</th><th scope="col">EP ↑</th><th scope="col">TTC ↑</th><th scope="col">LK ↑</th><th scope="col">HC ↑</th><th scope="col">EC ↑</th><th scope="col">EPDMS ↑</th></tr>
+</thead>
+<tbody><tr class=" "><th scope="rowgroup" rowspan="2">LTF</th><th scope="row">S1</th><td>96.1</td><td>85.3</td><td>99.4</td><td>99.3</td><td>84.7</td><td>94.7</td><td>93.6</td><td>97.6</td><td>77.3</td><td class="aggregate" rowspan="2">33.7</td></tr>
+<tr class=" group-end"><th scope="row">S2</th><td>85.5</td><td>66.9</td><td>91.6</td><td>99.1</td><td>93.0</td><td>81.1</td><td>58.3</td><td>95.1</td><td>42.9</td></tr>
+<tr class=" "><th scope="rowgroup" rowspan="2">DiffusionDrive</th><th scope="row">S1</th><td>97.9</td><td>87.3</td><td>99.3</td><td>99.3</td><td>82.8</td><td>96.2</td><td>98.0</td><td>97.6</td><td>63.6</td><td class="aggregate" rowspan="2">35.9</td></tr>
+<tr class=" group-end"><th scope="row">S2</th><td>87.1</td><td>72.1</td><td>93.1</td><td>98.8</td><td>91.9</td><td>81.5</td><td>61.5</td><td>95.5</td><td>28.6</td></tr>
+<tr class=" "><th scope="rowgroup" rowspan="2">MeanFuser</th><th scope="row">S1</th><td>97.6</td><td>91.8</td><td>99.3</td><td>99.3</td><td>84.4</td><td>96.7</td><td>96.4</td><td>97.6</td><td>80.4</td><td class="aggregate" rowspan="2">37.8</td></tr>
+<tr class=" group-end"><th scope="row">S2</th><td>87.2</td><td>67.2</td><td>94.4</td><td>98.3</td><td>94.0</td><td>79.9</td><td>65.9</td><td>95.0</td><td>42.6</td></tr>
+<tr class="ours "><th scope="rowgroup" rowspan="2">EnergyDrive (Ours)</th><th scope="row">S1</th><td>97.6</td><td>94.9</td><td>98.7</td><td>100.0</td><td>71.8</td><td>98.2</td><td>93.8</td><td>97.8</td><td>46.2</td><td class="aggregate" rowspan="2">44.2</td></tr>
+<tr class="ours group-end"><th scope="row">S2</th><td>94.7</td><td>85.2</td><td>94.4</td><td>99.3</td><td>63.8</td><td>93.1</td><td>55.2</td><td>96.9</td><td>48.6</td></tr>
+</tbody>
+</table>
+</div><p class="table-help">S1 / S2: the two evaluation stages. ↑ Higher is better. Tables scroll horizontally on smaller screens.</p>
+<p class="note">All methods use the standard NAVSIM-v2 <em>navhard</em> protocol. EPDMS is the overall two-stage score, not the arithmetic average of stage scores. EnergyDrive improves safety metrics, with lower ego progress (EP). The main comparison excludes separate PDM-score-supervised trajectory scorers.</p></div>
+<div class="results-block"><div class="table-wrap " role="region" aria-label="Table 2. HUGSIM" tabindex="0"><table><caption>Table 2. HUGSIM</caption>
+<thead><tr><th scope="col">Method</th><th scope="col">NC ↑</th><th scope="col">DAC ↑</th><th scope="col">TTC ↑</th><th scope="col">COM ↑</th><th scope="col">R<sub>c</sub> ↑</th><th scope="col">HD-E ↑</th><th scope="col">HD-M ↑</th><th scope="col">HD-H ↑</th><th scope="col">HD-X ↑</th><th scope="col">HD Avg ↑</th></tr>
+</thead>
+<tbody><tr class=""><th scope="row">LTF</th><td>53.5</td><td>96.3</td><td>47.0</td><td>99.2</td><td>46.2</td><td>67.2</td><td>40.0</td><td>18.8</td><td>6.9</td><td>32.5</td></tr>
+<tr class=""><th scope="row">DiffusionDrive</th><td>55.1</td><td>96.8</td><td>49.3</td><td>98.4</td><td>46.3</td><td>69.5</td><td>44.8</td><td>15.4</td><td>5.7</td><td>33.6</td></tr>
+<tr class=""><th scope="row">MeanFuser</th><td>54.6</td><td>96.6</td><td>49.0</td><td>99.4</td><td>48.9</td><td>77.5</td><td>40.5</td><td>17.7</td><td>10.9</td><td>35.3</td></tr>
+<tr class="ours"><th scope="row">EnergyDrive (Ours)</th><td>66.9</td><td>97.1</td><td>63.3</td><td>85.2</td><td>48.2</td><td>72.9</td><td>47.4</td><td>18.7</td><td>13.9</td><td><strong>37.9</strong></td></tr>
+</tbody>
+</table>
+</div><p class="note">Zero-shot transfer of NAVSIM-trained checkpoints, using the same HUGSIM protocol with controller convergence. HD is reported for easy (E), medium (M), hard (H), and extreme (X) scenarios; HD Avg is the scenario-weighted aggregate.</p></div>
+<details><summary>Additional benchmarks and inference efficiency</summary>
+<div class="table-wrap " role="region" aria-label="Table B.1. Model size and inference efficiency" tabindex="0"><table><caption>Table B.1. Model size and inference efficiency</caption>
+<thead><tr><th scope="col">Method</th><th scope="col">Inference</th><th scope="col">Params. (M)</th><th scope="col">Time (ms) ↓</th><th scope="col">FPS ↑</th><th scope="col">EPDMS ↑</th></tr>
+</thead>
+<tbody><tr class=""><th scope="row">LTF</th><td>Default</td><td>56.036</td><td>10.09</td><td>99.16</td><td>33.7</td></tr>
+<tr class=""><th scope="row">DiffusionDrive</th><td>Default</td><td>60.781</td><td>17.05</td><td>58.66</td><td>35.9</td></tr>
+<tr class=""><th scope="row">MeanFuser</th><td>Default</td><td>55.581</td><td>11.33</td><td>88.29</td><td>37.8</td></tr>
+<tr class=""><th scope="row">EnergyDrive (base)</th><td>Plain</td><td>68.377</td><td>68.30</td><td>14.64</td><td>34.5</td></tr>
+<tr class="ours"><th scope="row">EnergyDrive (full)</th><td>Repulsion, K = 64</td><td>68.377</td><td>92.67</td><td>10.79</td><td>44.2</td></tr>
+<tr class="ours"><th scope="row">EnergyDrive (full)</th><td>Vocabulary, 2,048</td><td>68.377</td><td>33.54</td><td>29.82</td><td>41.3</td></tr>
+</tbody>
+</table>
+</div><p class="note">Timing uses a single NVIDIA RTX PRO 6000 GPU. The two full-model variants share the final contrastive checkpoint; the base model is trained separately. Vocabulary selection is approximately 2.76× faster than iterative sampling, with a 2.9-point EPDMS reduction.</p>
+<div class="appendix-table"><div class="table-wrap " role="region" aria-label="Table C.1. Baseline checkpoint selection" tabindex="0"><table><caption>Table C.1. Baseline checkpoint selection</caption>
+<thead><tr><th scope="col">Method</th><th scope="col">Checkpoint</th><th scope="col">navhard ↑</th><th scope="col">navtest ↑</th><th scope="col">HUGSIM ↑</th></tr>
+</thead>
+<tbody><tr class=""><th scope="row">LTF</th><td>navtest</td><td>31.1</td><td>87.8</td><td>32.5</td></tr>
+<tr class=""><th scope="row">LTF</th><td>navhard</td><td>33.7</td><td>87.6</td><td>30.0</td></tr>
+<tr class=""><th scope="row">DiffusionDrive</th><td>navtest</td><td>34.9</td><td>89.4</td><td>33.6</td></tr>
+<tr class=""><th scope="row">DiffusionDrive</th><td>navhard</td><td>35.9</td><td>86.2</td><td>26.6</td></tr>
+<tr class="ours"><th scope="row">EnergyDrive</th><td>Same final EMA</td><td>44.2</td><td>89.1</td><td>37.9</td></tr>
+</tbody>
+</table>
+</div></div><p class="note">For each baseline, the checkpoint with the higher aggregate score is selected per benchmark, and all submetrics use that checkpoint. EnergyDrive uses the same final EMA checkpoint across benchmarks. NAVSIM columns report EPDMS; HUGSIM reports average HD.</p>
+<div class="appendix-table"><div class="table-wrap " role="region" aria-label="Table C.2. NAVSIM-v2 navtest" tabindex="0"><table><caption>Table C.2. NAVSIM-v2 <em>navtest</em></caption>
+<thead><tr><th scope="col">Method</th><th scope="col">NC ↑</th><th scope="col">DAC ↑</th><th scope="col">DDC ↑</th><th scope="col">TLC ↑</th><th scope="col">EP ↑</th><th scope="col">TTC ↑</th><th scope="col">LK ↑</th><th scope="col">HC ↑</th><th scope="col">EC ↑</th><th scope="col">EPDMS ↑</th></tr>
+</thead>
+<tbody><tr class=""><th scope="row">LTF</th><td>98.3</td><td>95.6</td><td>99.6</td><td>99.8</td><td>87.1</td><td>97.5</td><td>97.2</td><td>98.3</td><td>88.2</td><td>87.8</td></tr>
+<tr class=""><th scope="row">DiffusionDrive</th><td>98.5</td><td>97.1</td><td>99.6</td><td>99.8</td><td>87.4</td><td>97.8</td><td>98.0</td><td>98.3</td><td>87.5</td><td>89.4</td></tr>
+<tr class=""><th scope="row">MeanFuser</th><td>98.1</td><td>97.6</td><td>99.7</td><td>99.8</td><td>87.6</td><td>97.3</td><td>97.9</td><td>98.3</td><td>88.0</td><td><strong>89.7</strong></td></tr>
+<tr class="ours"><th scope="row">EnergyDrive (Ours)</th><td>97.8</td><td>98.3</td><td>99.4</td><td>99.8</td><td>86.6</td><td>97.2</td><td>96.5</td><td>98.3</td><td>86.9</td><td>89.1</td></tr>
+</tbody>
+</table>
+</div></div><p class="note">Scores on <em>navtest</em> are closely clustered; EnergyDrive does not lead this benchmark.</p>
+<div class="appendix-table"><div class="table-wrap " role="region" aria-label="Table C.3. GuideFlow comparison on NAVSIM-v2 navhard" tabindex="0"><table><caption>Table C.3. GuideFlow comparison on NAVSIM-v2 <em>navhard</em></caption>
+<thead><tr><th scope="col">Method</th><th scope="col">Separate PDM-score-supervised scorer</th><th scope="col">Result source</th><th scope="col">EPDMS ↑</th></tr>
+</thead>
+<tbody><tr class=""><th scope="row">GuideFlow (command)</th><td>No</td><td>Reported, Table 1</td><td>27.1</td></tr>
+<tr class=""><th scope="row">GuideFlow (plan anchor)</th><td>No</td><td>Reported, Table 4</td><td>29.0</td></tr>
+<tr class="ours"><th scope="row">EnergyDrive (Ours)</th><td>No</td><td>Our evaluation</td><td>44.2</td></tr>
+<tr class=""><th scope="row">GuideFlow+Scorer</th><td>Yes</td><td>Reported, Table 1</td><td>43.0</td></tr>
+<tr class=""><th scope="row">GuideFlow+Scorer†</th><td>Yes</td><td>Reported, Table 1</td><td>46.7</td></tr>
+</tbody>
+</table>
+</div></div><p class="note">GuideFlow values are paper-reported results from Liu et al. (2026b), arXiv:2511.18729v3, Tables 1 and 4; they were not re-evaluated here. Training data and inference settings are not matched. The scorer-augmented variants use GTRS-Dense; † denotes an adjusted trajectory-scoring strategy. EnergyDrive exceeds the listed no-scorer configurations, but not the adjusted-scoring variant at 46.7. See Appendix C.5 of the paper for the comparison scope.</p>
+</details>
+</div></section>
+<section id="composition" class="section"><div class="container">
+<h2>Flexible inference through composition</h2>
+<p class="lead">The same model represents alternative maneuvers and shared driving requirements through explicit energy functions.</p>
+<figure><a class="figure-link" href="assets/composition.webp" data-title="Energy composition with AND and OR" aria-label="Enlarge figure: Energy composition with AND and OR"><img src="assets/composition.webp" width="2800" height="1161" alt="Camera views and trajectory samples under left, straight, and right commands, OR combinations of commands, and shared drivable-area and collision constraints." loading="lazy" decoding="async"></a><figcaption><strong>Alternative maneuvers, shared requirements.</strong> L, S, and R denote left, straight, and right command conditionings. OR examples use repulsive gradient sampling on a level-normalized composed energy. In constraint-annotated panels, lighter trajectories fail the indicated drivable-area (DA) or collision-avoidance (NC) checks; their coordinates are unchanged.</figcaption></figure>
+<h3>Interpretable trajectory selection</h3>
+<figure><a class="figure-link" href="assets/modular-energy.webp" data-title="Trajectory selection with modular energies" aria-label="Enlarge figure: Trajectory selection with modular energies"><img src="assets/modular-energy.webp" width="2800" height="1161" alt="Two driving scenes comparing base-energy and composed-energy trajectory selection, energy-colored endpoints, predicted probability layers, and scene maps." loading="lazy" decoding="async"></a><figcaption><strong>How each objective shapes the selected plan.</strong> Red and blue trajectories show selections using the base learned energy and composed energy, respectively. Candidate endpoints are colored by full-trajectory energy. Predicted road and obstacle layers make the effect of the modular objectives visible.</figcaption></figure>
+<h3>Target-speed control without retraining</h3>
+<figure><a class="figure-link" href="assets/target-speed.webp" data-title="Inference-time target-speed control" aria-label="Enlarge figure: Inference-time target-speed control"><img src="assets/target-speed.webp" width="2800" height="1006" alt="Two fixed scenes with plain sampling and requested target speeds of 2, 3, 4, 5, and 6 meters per second; higher targets produce longer trajectories." loading="lazy" decoding="async"></a><figcaption><strong>Adjust behavior at inference time.</strong> With the scene and trained model fixed, higher requested speeds produce trajectories that travel farther over the same horizon. Target-speed energy is used in these qualitative examples and is not included in the quantitative benchmark evaluations.</figcaption></figure>
+</div></section>
+<section id="ablations" class="section shaded"><div class="container">
+<h2>Ablations and sensitivity</h2>
+<p class="lead">Modular objectives and contrastive training provide complementary improvements on NAVSIM-v2 <em>navhard</em>.</p>
+<div class="table-wrap " role="region" aria-label="Table 3. Ablation study on NAVSIM-v2 navhard" tabindex="0"><table><caption>Table 3. Ablation study on NAVSIM-v2 <em>navhard</em></caption>
+<thead><tr><th scope="col">Configuration</th><th scope="col">Contrast.</th><th scope="col">Collision</th><th scope="col">DA</th><th scope="col">Progress</th><th scope="col">NC ↑ (S1 / S2)</th><th scope="col">DAC ↑ (S1 / S2)</th><th scope="col">EPDMS ↑</th></tr>
+</thead>
+<tbody><tr class=""><th scope="row">Base</th><td>—</td><td>—</td><td>—</td><td>—</td><td>96.6 / 85.6</td><td>86.7 / 70.3</td><td>34.5</td></tr>
+<tr class=""><th scope="row">+ Collision</th><td>—</td><td>✓</td><td>—</td><td>—</td><td>98.7 / 88.5</td><td>84.9 / 67.4</td><td>34.8</td></tr>
+<tr class=""><th scope="row">+ DA</th><td>—</td><td>—</td><td>✓</td><td>—</td><td>96.6 / 85.3</td><td>92.9 / 75.3</td><td>36.7</td></tr>
+<tr class=""><th scope="row">+ Collision + DA</th><td>—</td><td>✓</td><td>✓</td><td>—</td><td>98.2 / 88.7</td><td>91.8 / 73.9</td><td>39.3</td></tr>
+<tr class=""><th scope="row">+ Collision + DA + progress</th><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>98.1 / 91.7</td><td>93.3 / 80.6</td><td>42.1</td></tr>
+<tr class=""><th scope="row">+ Contrastive + collision + DA</th><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>97.8 / 89.4</td><td>91.3 / 75.8</td><td>40.2</td></tr>
+<tr class="ours"><th scope="row">+ Contrastive + all energies</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>97.6 / 94.7</td><td>94.9 / 85.2</td><td><strong>44.2</strong></td></tr>
+</tbody>
+</table>
+</div><p class="note">NC and DAC are reported as Stage 1 / Stage 2. “All energies” means collision, drivable-area, and progress energies. The base model is trained without contrastive learning.</p>
+<h3>Energy-composition weights</h3>
+<figure><a class="figure-link" href="assets/ablation-sweep.webp" data-title="Sensitivity to energy-composition weights" aria-label="Enlarge figure: Sensitivity to energy-composition weights"><img src="assets/ablation-sweep.webp" width="2800" height="1018" alt="A heatmap of EPDMS over collision and drivable-area weights and four plots showing the safety-progress trade-off as the progress weight changes." loading="lazy" decoding="async"></a><figcaption><strong>A controllable safety–progress trade-off.</strong> The left panel varies collision and drivable-area weights with zero progress weight. The right panels vary the progress weight with both safety weights fixed to one. All sweeps use the non-contrastive base model; the zero-weight setting still selects over a repulsive proposal pool, unlike the single-proposal “Base” row in Table 3.</figcaption></figure>
+</div></section>
+</main>
+<footer class="site-footer"><p>Anonymous submission 16699 · ICLR 2027</p><p><a href="assets/paper.pdf">Read the paper</a> · <a href="#main">Back to overview</a></p></footer>
+<dialog id="figure-dialog" aria-labelledby="figure-title">
+<div class="dialog-toolbar"><h2 id="figure-title">Figure</h2><button type="button" class="close-button" autofocus>Close</button></div>
+<div class="dialog-body"><img alt=""></div>
+<p class="dialog-footer"><a class="original-link" href="assets/teaser.webp" target="_blank" rel="noopener noreferrer">Open full-resolution image</a></p>
+</dialog>
+</body>
+</html>
