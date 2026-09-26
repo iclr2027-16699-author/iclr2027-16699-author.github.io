@@ -25,10 +25,10 @@ The abstract and numerical results come from the supplied paper. The main three 
 
 ## Publish with GitHub Pages
 
-Publish from a dedicated anonymous user account. For a chosen account named `USERNAME`, the repository must be `USERNAME/USERNAME.github.io`, and its site address will be `https://USERNAME.github.io/` once publication is configured and succeeds. Confirm username availability before setting the remote.
+Publish from the dedicated anonymous user `iclr2027-16699-author`. The repository is `iclr2027-16699-author/iclr2027-16699-author.github.io`, and the site address is `https://iclr2027-16699-author.github.io/` once publication is configured and succeeds.
 
 1. Authenticate with the dedicated anonymous GitHub user, including the Git transport used for pushes.
-2. Create an empty public repository named `USERNAME.github.io` under that same anonymous user. Do not initialize it with a README or another commit.
+2. Create an empty public repository named `iclr2027-16699-author.github.io` under that same anonymous user. Do not initialize it with a README or another commit.
 3. Push this directory's `main` branch using the anonymous identity.
 4. Under repository **Settings → Pages**, choose **Deploy from a branch**, `main`, and `/ (root)`, then save.
 5. Verify the published site, commit author and committer, repository activity, and Pages workflow actor from a signed-out session.
