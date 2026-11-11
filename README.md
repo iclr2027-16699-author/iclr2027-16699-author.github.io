@@ -17,7 +17,7 @@ Open `http://127.0.0.1:8765`.
 - `index.html`: abstract, captions, results, and all seven tables.
 - `styles.css`: responsive layout and typography.
 - `script.js`: accessible figure enlargement and the driving-video selector.
-- `assets/`: six lossless figure exports and a simple favicon.
+- `assets/`: seven lossless figure exports, a sanitized figure PDF, and a simple favicon.
 - `assets/videos/`: five metadata-stripped MP4 clips and their poster images.
 
 Edit the relevant HTML section to add future materials. Tables are semantic HTML and can scroll on narrow screens. Appendix tables are inside the expandable results section. Figures have intrinsic image dimensions and descriptive alt text; retain these when replacing an asset.
@@ -51,7 +51,7 @@ git config --local tag.gpgsign false
 
 Anonymous commit metadata does not hide the authenticated GitHub pusher or deployment actor. Do not push using a personal account, its SSH key, or its token. Do not use a personal account's GitHub noreply email: it is still associated with that account.
 
-Use fresh image exports with no EXIF/XMP author fields. Strip container and stream metadata from new videos, and inspect their visible content for names, affiliations, profile links, or identifying watermarks. The current clips contain video only, with no audio, subtitles, or data tracks. Original figure PDFs are not included. The previously hosted anonymous paper has been removed from the current site; its sanitized copy remains in earlier Git commits.
+Use fresh image exports with no EXIF/XMP author fields. Strip document and embedded-image metadata from any figure PDF before publishing it. Strip container and stream metadata from new videos, and inspect their visible content for names, affiliations, profile links, or identifying watermarks. The current clips contain video only, with no audio, subtitles, or data tracks. The previously hosted anonymous paper has been removed from the current site; its sanitized copy remains in earlier Git commits.
 
 The page makes no external resource requests. Search-engine indexing is discouraged by `robots.txt` and page metadata; these are indexing preferences, not access controls or an anonymity guarantee.
 
