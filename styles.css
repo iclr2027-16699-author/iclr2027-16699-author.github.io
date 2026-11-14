@@ -22,6 +22,9 @@ h1{max-width:1050px;margin:0 auto 22px;font-size:clamp(2rem,4.2vw,3.2rem);font-w
 figure{margin:26px 0 0}
 .figure-link{display:block;cursor:zoom-in;border-radius:3px}
 figure img{display:block;width:100%;height:auto}
+.collision-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.collision-grid figure{margin:0}
+@media(max-width:700px){.collision-grid{grid-template-columns:1fr;gap:16px}}
 figcaption{color:var(--muted);font-size:15px;line-height:1.6;margin-top:14px}
 figcaption strong{color:var(--ink)}
 .teaser figcaption{max-width:940px;margin:20px auto 0;text-align:center;font-size:19px;line-height:1.55;color:#3b454f}

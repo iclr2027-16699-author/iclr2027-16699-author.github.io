@@ -20,7 +20,7 @@
   <h1>Energy-Based Generative Planning for Autonomous Driving</h1>
   <p class="authors">Anonymous authors</p>
   <p class="venue">ICLR 2027 · Submission 16699 · Under double-blind review</p>
-  <nav class="section-nav" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#composition">Composition</a><a href="#ablations">Ablations</a><a href="#videos">Videos</a></nav>
+  <nav class="section-nav" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#composition">Composition</a><a href="#collision-prediction">Collision prediction</a><a href="#ablations">Ablations</a><a href="#videos">Videos</a></nav>
 </header>
 <main id="main">
 <section class="teaser container" aria-label="EnergyDrive overview">
@@ -124,6 +124,33 @@
 <h3 id="target-speed-control">Target-speed control</h3>
 <figure><a class="figure-link" href="assets/target-speed.webp" data-title="Inference-time target-speed control" aria-label="Enlarge figure: Inference-time target-speed control"><img src="assets/target-speed.webp" width="2800" height="1006" alt="Two fixed scenes with plain sampling and requested target speeds of 2, 3, 4, 5, and 6 meters per second; higher targets produce longer trajectories." loading="lazy" decoding="async"></a><figcaption><strong>Adjust behavior at inference time.</strong> With the scene and trained model fixed, higher requested speeds produce trajectories that travel farther over the same horizon. Target-speed energy is used in these qualitative examples and is not included in the quantitative benchmark evaluations.</figcaption></figure>
 </div></section>
+<section id="collision-prediction" class="section">
+  <div class="container">
+    <h2>Trajectory planning with static and dynamic collision prediction</h2>
+    <div class="collision-grid">
+      <figure>
+        <a class="figure-link" href="assets/collision-prediction/junction.webp" data-title="Junction" aria-label="Enlarge collision prediction comparison at a junction">
+          <img src="assets/collision-prediction/junction.webp" width="1389" height="884" alt="Animated trajectory comparison at a junction, with static collision energy on the left and dynamic collision energy on the right." loading="lazy" decoding="async">
+        </a>
+      </figure>
+      <figure>
+        <a class="figure-link" href="assets/collision-prediction/parked-vehicles.webp" data-title="Road with parked vehicles" aria-label="Enlarge collision prediction comparison on a road with parked vehicles">
+          <img src="assets/collision-prediction/parked-vehicles.webp" width="1389" height="884" alt="Animated trajectory comparison on a road with parked vehicles, with static collision energy on the left and dynamic collision energy on the right." loading="lazy" decoding="async">
+        </a>
+      </figure>
+      <figure>
+        <a class="figure-link" href="assets/collision-prediction/side-street.webp" data-title="Road with a side street" aria-label="Enlarge collision prediction comparison on a road with a side street">
+          <img src="assets/collision-prediction/side-street.webp" width="1389" height="884" alt="Animated trajectory comparison on a road with a side street, with static collision energy on the left and dynamic collision energy on the right." loading="lazy" decoding="async">
+        </a>
+      </figure>
+      <figure>
+        <a class="figure-link" href="assets/collision-prediction/multilane-road.webp" data-title="Multilane road" aria-label="Enlarge collision prediction comparison on a multilane road">
+          <img src="assets/collision-prediction/multilane-road.webp" width="1389" height="884" alt="Animated trajectory comparison on a multilane road, with static collision energy on the left and dynamic collision energy on the right." loading="lazy" decoding="async">
+        </a>
+      </figure>
+    </div>
+  </div>
+</section>
 <section id="ablations" class="section shaded"><div class="container">
 <h2>Ablations and sensitivity</h2>
 <p class="lead">Modular objectives and contrastive training provide complementary improvements on NAVSIM-v2 <em>navhard</em>.</p>
