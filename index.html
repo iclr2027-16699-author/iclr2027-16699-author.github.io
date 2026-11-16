@@ -20,7 +20,7 @@
   <h1>Energy-Based Generative Planning for Autonomous Driving</h1>
   <p class="authors">Anonymous authors</p>
   <p class="venue">ICLR 2027 · Submission 16699 · Under double-blind review</p>
-  <nav class="section-nav" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#composition">Composition</a><a href="#collision-prediction">Collision prediction</a><a href="#ablations">Ablations</a><a href="#videos">Videos</a></nav>
+  <nav class="section-nav" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#composition">Composition</a><a href="#intermediate-trajectory-sampling">Sampling steps</a><a href="#collision-prediction">Collision prediction</a><a href="#ablations">Ablations</a><a href="#videos">Videos</a></nav>
 </header>
 <main id="main">
 <section class="teaser container" aria-label="EnergyDrive overview">
@@ -124,10 +124,43 @@
 <h3 id="target-speed-control">Target-speed control</h3>
 <figure><a class="figure-link" href="assets/target-speed.webp" data-title="Inference-time target-speed control" aria-label="Enlarge figure: Inference-time target-speed control"><img src="assets/target-speed.webp" width="2800" height="1006" alt="Two fixed scenes with plain sampling and requested target speeds of 2, 3, 4, 5, and 6 meters per second; higher targets produce longer trajectories." loading="lazy" decoding="async"></a><figcaption><strong>Adjust behavior at inference time.</strong> With the scene and trained model fixed, higher requested speeds produce trajectories that travel farther over the same horizon. Target-speed energy is used in these qualitative examples and is not included in the quantitative benchmark evaluations.</figcaption></figure>
 </div></section>
+<section id="intermediate-trajectory-sampling" class="section">
+  <div class="container">
+    <h2>Visualization on intermediate trajectory sampling steps</h2>
+    <p class="lead">Starting from Gaussian noise, the sampler refines each trajectory into a path that follows the road and the intended maneuver. Across the five examples, trajectory energy falls by roughly half, and EPDMS rises from 0 to 0.87–0.99 by step 10.</p>
+    <div class="figure-grid">
+      <figure>
+        <a class="figure-link" href="assets/sampling-steps/trajectory-left-1.gif" data-title="Left turn 1" aria-label="Enlarge sampling steps for left turn 1">
+          <img src="assets/sampling-steps/trajectory-left-1.gif" width="1036" height="777" alt="Left turn 1: the sampled trajectory settles into a left turn through an intersection, with lower energy and higher EPDMS at step 10." loading="lazy" decoding="async">
+        </a>
+      </figure>
+      <figure>
+        <a class="figure-link" href="assets/sampling-steps/trajectory-left-2.gif" data-title="Left turn 2" aria-label="Enlarge sampling steps for left turn 2">
+          <img src="assets/sampling-steps/trajectory-left-2.gif" width="1036" height="777" alt="Left turn 2: the sampled trajectory settles into a left turn at a curved junction, with lower energy and higher EPDMS at step 10." loading="lazy" decoding="async">
+        </a>
+      </figure>
+      <figure>
+        <a class="figure-link" href="assets/sampling-steps/trajectory-straight.gif" data-title="Straight" aria-label="Enlarge sampling steps for straight driving">
+          <img src="assets/sampling-steps/trajectory-straight.gif" width="1036" height="777" alt="Straight: the sampled trajectory aligns with the lane past a side street, with lower energy and higher EPDMS at step 10." loading="lazy" decoding="async">
+        </a>
+      </figure>
+      <figure>
+        <a class="figure-link" href="assets/sampling-steps/trajectory-right-1.gif" data-title="Right turn 1" aria-label="Enlarge sampling steps for right turn 1">
+          <img src="assets/sampling-steps/trajectory-right-1.gif" width="1036" height="777" alt="Right turn 1: the sampled trajectory settles into a right turn at an intersection with nearby traffic, with lower energy and higher EPDMS at step 10." loading="lazy" decoding="async">
+        </a>
+      </figure>
+      <figure>
+        <a class="figure-link" href="assets/sampling-steps/trajectory-right-2.gif" data-title="Right turn 2" aria-label="Enlarge sampling steps for right turn 2">
+          <img src="assets/sampling-steps/trajectory-right-2.gif" width="1036" height="777" alt="Right turn 2: the sampled trajectory settles into a right turn at a wide junction, with lower energy and higher EPDMS at step 10." loading="lazy" decoding="async">
+        </a>
+      </figure>
+    </div>
+  </div>
+</section>
 <section id="collision-prediction" class="section">
   <div class="container">
     <h2>Trajectory planning with static and dynamic collision prediction</h2>
-    <div class="collision-grid">
+    <div class="figure-grid">
       <figure>
         <a class="figure-link" href="assets/collision-prediction/junction.webp" data-title="Junction" aria-label="Enlarge collision prediction comparison at a junction">
           <img src="assets/collision-prediction/junction.webp" width="1389" height="884" alt="Animated trajectory comparison at a junction, with static collision energy on the left and dynamic collision energy on the right." loading="lazy" decoding="async">
