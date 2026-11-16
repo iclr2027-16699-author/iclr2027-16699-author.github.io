@@ -63,17 +63,17 @@
 </div><p class="note">Zero-shot transfer of NAVSIM-trained checkpoints, using the same HUGSIM protocol with controller convergence. HD is reported for easy (E), medium (M), hard (H), and extreme (X) scenarios; HD Avg is the scenario-weighted aggregate.</p></div>
 <details><summary>Additional benchmarks and inference efficiency</summary>
 <div class="table-wrap " role="region" aria-label="Table B.1. Model size and inference efficiency" tabindex="0"><table><caption>Table B.1. Model size and inference efficiency</caption>
-<thead><tr><th scope="col">Method</th><th scope="col">Inference</th><th scope="col">Params. (M)</th><th scope="col">Time (ms) ↓</th><th scope="col">FPS ↑</th><th scope="col">EPDMS ↑</th></tr>
+<thead><tr><th scope="col">Method</th><th scope="col">Inference setting</th><th scope="col">Params. (M)</th><th scope="col">Time (ms) ↓</th><th scope="col">FPS ↑</th><th scope="col">EPDMS ↑</th></tr>
 </thead>
 <tbody><tr class=""><th scope="row">LTF</th><td>Default</td><td>56.036</td><td>10.09</td><td>99.16</td><td>33.7</td></tr>
 <tr class=""><th scope="row">DiffusionDrive</th><td>Default</td><td>60.781</td><td>17.05</td><td>58.66</td><td>35.9</td></tr>
 <tr class=""><th scope="row">MeanFuser</th><td>Default</td><td>55.581</td><td>11.33</td><td>88.29</td><td>37.8</td></tr>
-<tr class=""><th scope="row">EnergyDrive (base)</th><td>Plain</td><td>68.377</td><td>68.30</td><td>14.64</td><td>34.5</td></tr>
-<tr class="ours"><th scope="row">EnergyDrive (full)</th><td>Repulsion, K = 64</td><td>68.377</td><td>92.67</td><td>10.79</td><td>44.2</td></tr>
-<tr class="ours"><th scope="row">EnergyDrive (full)</th><td>Vocabulary, 2,048</td><td>68.377</td><td>33.54</td><td>29.82</td><td>41.3</td></tr>
+<tr class=""><th scope="row">EnergyDrive (base)</th><td>Plain</td><td>68.377</td><td>59.27</td><td>16.87</td><td>34.5</td></tr>
+<tr class="ours"><th scope="row">EnergyDrive (full)</th><td>Repulsion, K = 64</td><td>68.377</td><td>64.69</td><td>15.46</td><td><strong>44.2</strong></td></tr>
+<tr class="ours"><th scope="row">EnergyDrive (full)</th><td>Vocabulary, 2,048</td><td>68.377</td><td>19.36</td><td>51.65</td><td>40.3</td></tr>
 </tbody>
 </table>
-</div><p class="note">Timing uses a single NVIDIA RTX PRO 6000 GPU. The two full-model variants share the final contrastive checkpoint; the base model is trained separately. Vocabulary selection is approximately 2.76× faster than iterative sampling, with a 2.9-point EPDMS reduction.</p>
+</div><p class="note">EPDMS is measured on NAVSIM-v2 <em>navhard</em>. Timing uses a single NVIDIA RTX PRO 6000 GPU. The two full-model variants share the final contrastive checkpoint. The base model uses a separately trained non-contrastive checkpoint. Vocabulary selection delivers about 3.34× the throughput of iterative sampling, with a 3.9-point EPDMS reduction.</p>
 <div class="appendix-table"><div class="table-wrap " role="region" aria-label="Table C.1. Baseline checkpoint selection" tabindex="0"><table><caption>Table C.1. Baseline checkpoint selection</caption>
 <thead><tr><th scope="col">Method</th><th scope="col">Checkpoint</th><th scope="col">navhard ↑</th><th scope="col">navtest ↑</th><th scope="col">HUGSIM ↑</th></tr>
 </thead>
